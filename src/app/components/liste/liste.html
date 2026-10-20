@@ -1,0 +1,24 @@
+<section class="text-center">
+  <h2 class="page-title mb-4">Mes 5 films préférés</h2>
+
+  <div class="liste mx-auto d-flex flex-column gap-2">
+    @for (film of films; track film.titre; let i = $index) {
+      <a
+        href="#"
+        class="film-link"
+        [class.active]="film === selection"
+        (click)="choisir(film); $event.preventDefault()"
+      >
+        <span class="num">{{ '0' + (i + 1) }}</span>
+        <span class="titre">{{ film.titre }}</span>
+      </a>
+    }
+  </div>
+
+  @if (selection) {
+    <div class="detail mt-5">
+      <h3 class="detail-titre">{{ selection.titre }}</h3>
+      <img [src]="selection.affiche" [alt]="'Affiche de ' + selection.titre" class="affiche" />
+    </div>
+  }
+</section>

@@ -1,0 +1,56 @@
+<section class="mx-auto contact glass">
+  <div class="p-4 p-md-5">
+    <h2 class="page-title d-block text-center mb-4">Contact</h2>
+    <form [formGroup]="form" (ngSubmit)="envoyer()" novalidate>
+      <div class="mb-3">
+        <label for="prenom" class="form-label">Prénom *</label>
+        <input id="prenom" class="form-control" formControlName="prenom"
+               [class.is-invalid]="form.controls.prenom.touched && form.controls.prenom.invalid" />
+        <div class="invalid-feedback">Le prénom est requis.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="nom" class="form-label">Nom *</label>
+        <input id="nom" class="form-control" formControlName="nom"
+               [class.is-invalid]="form.controls.nom.touched && form.controls.nom.invalid" />
+        <div class="invalid-feedback">Le nom est requis.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="age" class="form-label">Âge</label>
+        <input id="age" type="number" class="form-control" formControlName="age"
+               [class.is-invalid]="form.controls.age.invalid" />
+        <div class="invalid-feedback">Âge invalide.</div>
+      </div>
+
+      <div class="form-check mb-3">
+        <input id="hide" type="checkbox" class="form-check-input" formControlName="hide" />
+        <label for="hide" class="form-check-label">Hide</label>
+      </div>
+
+      @if (!hidden) {
+        <div class="mb-3">
+          <label for="email" class="form-label">Email *</label>
+          <input id="email" class="form-control" formControlName="email"
+                 [class.is-invalid]="form.controls.email.touched && form.controls.email.invalid" />
+          <div class="invalid-feedback">
+            @if (form.controls.email.hasError('required')) {
+              L'email est requis.
+            } @else {
+              Email invalide (ex : nom@site.fr).
+            }
+          </div>
+        </div>
+      }
+
+      <div class="mb-4">
+        <label for="commentaire" class="form-label">Commentaire *</label>
+        <textarea id="commentaire" rows="4" class="form-control" formControlName="commentaire"
+                  [class.is-invalid]="form.controls.commentaire.touched && form.controls.commentaire.invalid"></textarea>
+        <div class="invalid-feedback">Le commentaire est requis.</div>
+      </div>
+
+      <button type="submit" class="btn btn-red w-100" [disabled]="form.invalid">Envoyer</button>
+    </form>
+  </div>
+</section>

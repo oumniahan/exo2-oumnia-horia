@@ -1,0 +1,13 @@
+<nav class="app-navbar" [class.scrolled]="scrolled">
+  <div class="container d-flex align-items-center">
+    <a class="brand" routerLink="/accueil">CINÉCLUB</a>
+    <ul class="nav-links list-unstyled d-flex mb-0">
+      <li><a routerLink="/accueil" routerLinkActive="active">Accueil</a></li>
+      <li><a routerLink="/liste" routerLinkActive="active">Liste</a></li>
+      <li><a routerLink="/gestion" routerLinkActive="active">Gestion</a></li>
+    </ul>
+    <a class="profil ms-auto" routerLink="/contact" title="Contact" aria-label="Contact">
+      <span>:)</span>
+    </a>
+  </div>
+</nav>

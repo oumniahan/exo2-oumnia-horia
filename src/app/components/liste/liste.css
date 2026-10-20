@@ -1,0 +1,19 @@
+.liste { max-width: 480px; }
+.film-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem 1.2rem; border-radius: 4px;
+  background: var(--surface); color: #e5e5e5; text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: transform 0.15s, background 0.15s, border-color 0.15s;
+}
+.film-link:hover { background: #3a3a3a; transform: scale(1.02); color: #fff; }
+.film-link.active { background: #3a3a3a; border-left-color: var(--red); color: #fff; }
+.num { font-family: var(--font-display); font-size: 1.6rem; color: var(--red); }
+.titre { flex: 1; text-align: left; font-weight: 500; }
+
+.detail { animation: rise 0.4s ease both; }
+.detail-titre { font-size: 2rem; margin-bottom: 1rem; }
+.affiche {
+  max-height: 520px; max-width: 100%; border-radius: 4px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(229, 9, 20, 0.22);
+}

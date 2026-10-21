@@ -1,2 +1,7 @@
-.contact { max-width: 460px; }
-.form-label { color: var(--muted); font-size: 0.85rem; }
+.contact {
+  max-width: 460px;
+}
+
+.form-label {
+  color: #b3b3b3;
+}

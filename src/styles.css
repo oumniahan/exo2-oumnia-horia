@@ -1,84 +1,115 @@
-@import '@fontsource/bebas-neue/400.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/700.css';
-@import '@fontsource/inter/800.css';
-
 :root {
-  --bg: #141414;
-  --surface: #2b2b2b;
-  --border: rgba(255, 255, 255, 0.14);
-  --red: #e50914;
-  --red-dark: #b20710;
-  --text: #ffffff;
-  --muted: #b3b3b3;
-  --font-display: 'Bebas Neue', 'Impact', sans-serif;
+  --rouge: #e50914;
+  --rouge-fonce: #b20710;
+  --fond: #141414;
 }
 
 body {
-  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(1000px 520px at 50% -8%, rgba(229, 9, 20, 0.22), transparent 65%),
-    var(--bg);
+  font-family: 'Inter', Arial, sans-serif;
+  color: white;
+  background: radial-gradient(1000px 500px at 50% -10%, rgba(229, 9, 20, 0.22), transparent 65%), var(--fond);
   background-attachment: fixed;
 }
 
-h1, h2, h3 { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; letter-spacing: -0.02em; font-weight: 800; }
+h1, h2, h3 {
+  font-weight: 800;
+}
 
 .page-title {
-  text-transform: none;
-  font-size: clamp(2.4rem, 6vw, 3.4rem);
-  color: #fff;
+  font-size: 3rem;
   display: inline-block;
   position: relative;
-  padding-bottom: 0.4rem;
+  padding-bottom: 8px;
 }
+
 .page-title::after {
   content: '';
-  position: absolute; left: 50%; bottom: 0;
-  width: 56px; height: 4px; margin-left: -28px;
-  background: var(--red); border-radius: 2px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  margin-left: -28px;
+  background-color: var(--rouge);
+  border-radius: 2px;
 }
 
-.btn-red, .btn-light-n, .btn-grey {
-  border: 0; border-radius: 4px; font-weight: 600;
-  padding: 0.65rem 1.6rem; font-size: 1rem;
-  transition: background 0.15s, transform 0.15s, opacity 0.15s;
+.btn-rouge {
+  background-color: var(--rouge);
+  color: white;
+  font-weight: 600;
+  border: none;
 }
-.btn-red { background: var(--red); color: #fff; }
-.btn-red:hover:not(:disabled) { background: var(--red-dark); color: #fff; }
-.btn.btn-red, .btn.btn-red:disabled { background: var(--red); color: #fff; border: 0; }
-.btn.btn-red:disabled { opacity: 0.4; }
-.btn.btn-red:hover:not(:disabled) { background: var(--red-dark); }
-.btn-light-n { background: #fff; color: #000; }
-.btn-light-n:hover { background: rgba(255, 255, 255, 0.75); color: #000; }
-.btn-grey { background: rgba(109, 109, 110, 0.7); color: #fff; }
-.btn-grey:hover { background: rgba(109, 109, 110, 0.45); color: #fff; }
 
-.glass {
-  background: rgba(0, 0, 0, 0.75);
+.btn-rouge:hover {
+  background-color: var(--rouge-fonce);
+  color: white;
+}
+
+.btn-rouge:disabled {
+  background-color: var(--rouge);
+  color: white;
+  opacity: 0.4;
+}
+
+.btn-blanc {
+  background-color: white;
+  color: black;
+  font-weight: 600;
+}
+
+.btn-blanc:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.btn-gris {
+  background-color: rgba(109, 109, 110, 0.7);
+  color: white;
+  font-weight: 600;
+}
+
+.btn-gris:hover {
+  background-color: rgba(109, 109, 110, 0.45);
+  color: white;
+}
+
+.bloc {
+  background-color: rgba(0, 0, 0, 0.75);
   border-radius: 6px;
-  box-shadow: 0 0 0 1px var(--border), 0 25px 60px rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 25px 60px rgba(0, 0, 0, 0.6);
 }
 
 .form-control {
-  background: #333;
+  background-color: #333;
   border: 1px solid transparent;
-  border-radius: 4px;
-  color: #fff;
-  padding: 0.8rem 1rem;
+  color: white;
+  padding: 12px 16px;
 }
-.form-control:focus {
-  background: #3d3d3d;
-  border-color: #fff;
-  box-shadow: none;
-  color: #fff;
-}
-.form-check-input:checked { background-color: var(--red); border-color: var(--red); }
 
-@keyframes rise {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: none; }
+.form-control:focus {
+  background-color: #3d3d3d;
+  border-color: white;
+  box-shadow: none;
+  color: white;
 }
-main > * { animation: rise 0.45s ease both; }
+
+.form-check-input:checked {
+  background-color: var(--rouge);
+  border-color: var(--rouge);
+}
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+main > * {
+  animation: apparition 0.4s ease;
+}

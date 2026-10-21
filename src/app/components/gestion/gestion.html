@@ -1,26 +1,26 @@
 <section class="text-center">
   <h2 class="page-title mb-4">Gestion</h2>
-  @if (contact; as c) {
-    <div class="glass mx-auto text-start gestion">
-      <div class="entete d-flex align-items-center gap-3">
-        <div class="avatar">{{ c.prenom.charAt(0).toUpperCase() }}</div>
+
+  @if (contact) {
+    <div class="bloc mx-auto text-start gestion">
+      <div class="d-flex align-items-center gap-3 entete">
+        <div class="avatar">{{ contact.prenom?.charAt(0)?.toUpperCase() }}</div>
         <div>
-          <div class="fw-semibold fs-5">{{ c.prenom }} {{ c.nom }}</div>
+          <div class="fw-bold fs-5">{{ contact.prenom }} {{ contact.nom }}</div>
           <div class="small text-secondary">Dernier formulaire envoyé</div>
         </div>
       </div>
-      <dl class="infos">
-        <dt>Prénom</dt><dd>{{ c.prenom }}</dd>
-        <dt>Nom</dt><dd>{{ c.nom }}</dd>
-        <dt>Âge</dt><dd>{{ c.age ?? 'Non renseigné' }}</dd>
-        <dt>Email</dt><dd>{{ c.email || 'Non renseigné (masqué)' }}</dd>
-        <dt>Commentaire</dt><dd>{{ c.commentaire }}</dd>
-      </dl>
+
+      <table class="infos">
+        <tr><th>Prénom</th><td>{{ contact.prenom }}</td></tr>
+        <tr><th>Nom</th><td>{{ contact.nom }}</td></tr>
+        <tr><th>Âge</th><td>{{ contact.age || 'Non renseigné' }}</td></tr>
+        <tr><th>Email</th><td>{{ contact.email || 'Non renseigné (masqué)' }}</td></tr>
+        <tr><th>Commentaire</th><td>{{ contact.commentaire }}</td></tr>
+      </table>
     </div>
   } @else {
-    <div class="py-5">
-      <p class="erreur">404</p>
-      <p class="lead text-secondary">Not found – aucun formulaire n'a encore été envoyé.</p>
-    </div>
+    <p class="erreur">404</p>
+    <p class="lead text-secondary">Not found : aucun formulaire n'a encore été envoyé.</p>
   }
 </section>

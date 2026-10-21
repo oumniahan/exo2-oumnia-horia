@@ -1,15 +1,17 @@
-import { Component, inject } from '@angular/core';
-import { ContactService } from '../../services/contact';
+import { Component } from '@angular/core';
+import { ContactData, ContactService } from '../../services/contact-service';
 
 @Component({
   selector: 'app-gestion',
   imports: [],
   templateUrl: './gestion.html',
-  styleUrl: './gestion.css',
+  styleUrl: './gestion.css'
 })
 export class Gestion {
-  private contactService = inject(ContactService);
-  get contact() {
-    return this.contactService.dernierContact;
+
+  public contact: ContactData | null = null;
+
+  constructor(private contactService: ContactService) {
+    this.contact = contactService.dernierContact;
   }
 }

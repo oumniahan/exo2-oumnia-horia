@@ -1,56 +1,52 @@
-<section class="mx-auto contact glass">
-  <div class="p-4 p-md-5">
-    <h2 class="page-title d-block text-center mb-4">Contact</h2>
-    <form [formGroup]="form" (ngSubmit)="envoyer()" novalidate>
-      <div class="mb-3">
-        <label for="prenom" class="form-label">Prénom *</label>
-        <input id="prenom" class="form-control" formControlName="prenom"
-               [class.is-invalid]="form.controls.prenom.touched && form.controls.prenom.invalid" />
-        <div class="invalid-feedback">Le prénom est requis.</div>
-      </div>
+<section class="mx-auto contact bloc">
+  <h2 class="page-title text-center mb-4">Contact</h2>
 
-      <div class="mb-3">
-        <label for="nom" class="form-label">Nom *</label>
-        <input id="nom" class="form-control" formControlName="nom"
-               [class.is-invalid]="form.controls.nom.touched && form.controls.nom.invalid" />
-        <div class="invalid-feedback">Le nom est requis.</div>
-      </div>
-
-      <div class="mb-3">
-        <label for="age" class="form-label">Âge</label>
-        <input id="age" type="number" class="form-control" formControlName="age"
-               [class.is-invalid]="form.controls.age.invalid" />
-        <div class="invalid-feedback">Âge invalide.</div>
-      </div>
-
-      <div class="form-check mb-3">
-        <input id="hide" type="checkbox" class="form-check-input" formControlName="hide" />
-        <label for="hide" class="form-check-label">Hide</label>
-      </div>
-
-      @if (!hidden) {
-        <div class="mb-3">
-          <label for="email" class="form-label">Email *</label>
-          <input id="email" class="form-control" formControlName="email"
-                 [class.is-invalid]="form.controls.email.touched && form.controls.email.invalid" />
-          <div class="invalid-feedback">
-            @if (form.controls.email.hasError('required')) {
-              L'email est requis.
-            } @else {
-              Email invalide (ex : nom@site.fr).
-            }
-          </div>
-        </div>
+  <form [formGroup]="contactForm" (ngSubmit)="envoyer()">
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prénom *</label>
+      <input id="prenom" type="text" class="form-control" formControlName="prenom">
+      @if (contactForm.controls.prenom.touched && contactForm.controls.prenom.invalid) {
+        <small class="text-danger">Le prénom est obligatoire</small>
       }
+    </div>
 
-      <div class="mb-4">
-        <label for="commentaire" class="form-label">Commentaire *</label>
-        <textarea id="commentaire" rows="4" class="form-control" formControlName="commentaire"
-                  [class.is-invalid]="form.controls.commentaire.touched && form.controls.commentaire.invalid"></textarea>
-        <div class="invalid-feedback">Le commentaire est requis.</div>
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom *</label>
+      <input id="nom" type="text" class="form-control" formControlName="nom">
+      @if (contactForm.controls.nom.touched && contactForm.controls.nom.invalid) {
+        <small class="text-danger">Le nom est obligatoire</small>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="age" class="form-label">Âge</label>
+      <input id="age" type="number" class="form-control" formControlName="age">
+    </div>
+
+    <div class="form-check mb-3">
+      <input id="hide" type="checkbox" class="form-check-input" formControlName="hide"
+             #hideBox (change)="onHide(hideBox.checked)">
+      <label for="hide" class="form-check-label">Hide</label>
+    </div>
+
+    @if (!contactForm.value.hide) {
+      <div class="mb-3">
+        <label for="email" class="form-label">Email *</label>
+        <input id="email" type="email" class="form-control" formControlName="email">
+        @if (contactForm.controls.email.touched && contactForm.controls.email.invalid) {
+          <small class="text-danger">Email obligatoire avec un &#64; (ex : nom&#64;site.fr)</small>
+        }
       </div>
+    }
 
-      <button type="submit" class="btn btn-red w-100" [disabled]="form.invalid">Envoyer</button>
-    </form>
-  </div>
+    <div class="mb-4">
+      <label for="commentaire" class="form-label">Commentaire *</label>
+      <textarea id="commentaire" rows="4" class="form-control" formControlName="commentaire"></textarea>
+      @if (contactForm.controls.commentaire.touched && contactForm.controls.commentaire.invalid) {
+        <small class="text-danger">Le commentaire est obligatoire</small>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-rouge w-100" [disabled]="!contactForm.valid">Envoyer</button>
+  </form>
 </section>
